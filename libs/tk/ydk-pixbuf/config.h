@@ -24,7 +24,9 @@
 /* #undef HAVE_SYS_SYSTEMINFO_H */
 
 /* Define to 1 if you have the <unistd.h> header file. */
+#ifndef COMPILER_MSVC
 #define HAVE_UNISTD_H 1
+#endif
 
 /* Define to the version of this package. */
 #define PACKAGE_VERSION "2.31.1"
