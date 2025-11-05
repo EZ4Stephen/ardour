@@ -53,7 +53,9 @@
 #define HAVE_SYS_TYPES_H 1
 
 /* Define to 1 if you have the <unistd.h> header file. */
+#ifndef COMPILER_MSVC
 #define HAVE_UNISTD_H 1
+#endif
 
 /* Name of package */
 #define PACKAGE "gtk-engines"
