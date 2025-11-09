@@ -18,7 +18,9 @@
 
 #pragma once
 
+#ifndef COMPILER_MSVC
 #include <unistd.h>
+#endif
 
 namespace PBD {
 

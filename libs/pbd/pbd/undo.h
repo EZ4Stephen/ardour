@@ -32,11 +32,31 @@
 #ifndef COMPILER_MSVC
 #include <sys/time.h>
 #else
-#include <ardourext/misc.h>
+#include <winsock2.h>
 #endif
 
 #include "pbd/command.h"
 #include "pbd/libpbd_visibility.h"
+
+#ifdef COMPILER_MSVC
+static inline int gettimeofday(struct timeval *tv, void *)
+{
+    FILETIME ft;
+    ULARGE_INTEGER tmpres;
+	
+	GetSystemTimeAsFileTime(&ft);
+    tmpres.HighPart = ft.dwHighDateTime;
+    tmpres.LowPart = ft.dwLowDateTime;
+    tmpres.QuadPart /= 10;
+    tmpres.QuadPart -= 11644473600000000ULL;
+    
+    tv->tv_sec = (long)(tmpres.QuadPart / 1000000ULL);
+    tv->tv_usec = (long)(tmpres.QuadPart % 1000000ULL);
+    
+    return 0;
+
+}
+#endif
 
 namespace PBD {
 

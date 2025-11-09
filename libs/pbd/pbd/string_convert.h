@@ -69,13 +69,7 @@ LIBPBD_API bool string_to_float (const std::string& str, float& val);
 LIBPBD_API bool string_to_double (const std::string& str, double& val);
 
 template <class T>
-inline bool to_string (T val, std::string& str)
-{
-	// This will cause a compile time error if this function is ever
-	// instantiated, which is useful to catch unintended conversions
-	typename T::TO_STRING_TEMPLATE_NOT_DEFINED_FOR_THIS_TYPE invalid_type;
-	return false;
-}
+inline bool to_string (T val, std::string& str) = delete;
 
 template <class T>
 inline bool to_string (bool val, std::string& str)
@@ -144,13 +138,7 @@ inline bool to_string (double val, std::string& str)
 }
 
 template <class T>
-inline bool string_to (const std::string& str, T& val)
-{
-	// This will cause a compile time error if this function is ever
-	// instantiated, which is useful to catch unintended conversions
-	typename T::TO_STRING_TEMPLATE_NOT_DEFINED_FOR_THIS_TYPE invalid_type;
-	return false;
-}
+inline bool string_to (const std::string& str, T& val) = delete;
 
 template <class T>
 inline bool string_to (const std::string& str, bool& val)
@@ -231,13 +219,7 @@ inline bool string_to (const std::string& str, double& val)
 ////////////////////////////////////////////////////////////////
 
 template <class T>
-inline std::string to_string (T val)
-{
-	// This will cause a compile time error if this function is ever
-	// instantiated, which is useful to catch unintended conversions
-	typename T::TO_STRING_TEMPLATE_NOT_DEFINED_FOR_THIS_TYPE invalid_type;
-	return std::string();
-}
+inline std::string to_string (T val) = delete;
 
 template <>
 inline std::string to_string (bool val)
@@ -328,13 +310,7 @@ inline std::string to_string (double val)
 }
 
 template <class T>
-inline T string_to (const std::string& str)
-{
-	// This will cause a compile time error if this function is ever
-	// instantiated, which is useful to catch unintended conversions
-	typename T::STRING_TO_TEMPLATE_NOT_DEFINED_FOR_THIS_TYPE invalid_type;
-	return T();
-}
+inline T string_to (const std::string& str) = delete;
 
 template <>
 inline bool string_to (const std::string& str)

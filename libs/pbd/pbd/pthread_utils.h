@@ -29,18 +29,14 @@
 #define PTHREAD_MACROS_DEFINED
 #ifdef  PTW32_VERSION  /* pthread_win32 */
 #define mark_pthread_inactive(threadID)  threadID.p=0
-#define is_pthread_active(threadID)      threadID.p!=0
+#define is_pthread_active(threadID)      (threadID.p!=0)
 #else                 /* normal pthread */
 #define mark_pthread_inactive(threadID)  threadID=0
 #define is_pthread_active(threadID)      threadID!=0
 #endif  /* PTW32_VERSION */
 #endif  /* PTHREAD_MACROS_DEFINED */
 
-#ifdef COMPILER_MSVC
-#include <ardourext/pthread.h>
-#else
 #include <pthread.h>
-#endif
 #include <signal.h>
 #include <string>
 #include <stdint.h>

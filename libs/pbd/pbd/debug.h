@@ -30,11 +30,7 @@
 #include "pbd/timing.h"
 
 /* check for PTW32_VERSION */
-#ifdef COMPILER_MSVC
-#include <ardourext/pthread.h>
-#else
 #include <pthread.h>
-#endif
 
 namespace PBD {
 
